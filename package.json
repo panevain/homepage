@@ -3,6 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -16,6 +17,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
     "typescript": "^5.9.2",
     "vue-tsc": "^3.0.5"
   }
