@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "homepage",
   "type": "module",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck"
   },
+  "packageManager": "bun@1.2.19",
   "dependencies": {
     "nuxt": "^4.0.3",
     "vue": "^3.5.18",
@@ -20,5 +21,9 @@
     "husky": "^9.1.7",
     "typescript": "^5.9.2",
     "vue-tsc": "^3.0.5"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "bun": ">=1.2.0"
   }
 }
