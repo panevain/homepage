@@ -1,39 +1,56 @@
 # https://github.com/actions/deploy-pages#usage
 name: Deploy to GitHub Pages
 on:
+  # Trigger the workflow manually from the Actions tab
   workflow_dispatch:
+  # Trigger the workflow on pushes to the main branch
   push:
     branches:
       - main
+
+# A workflow run is made up of one or more jobs that run sequentially or in parallel
 jobs:
+  # The 'build' job to build your project and upload the artifact
   build:
+    # Runs on the latest Ubuntu runner
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: corepack enable
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      # Pick your own package manager and build script
-      - run: npm install
-      - run: npx nuxt build --preset github_pages
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Sets up the Bun runtime environment
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      # Installs all project dependencies using Bun
+      - name: Install dependencies
+        run: bun install
+
+      # Builds the Nuxt project for GitHub Pages
+      - name: Build project
+        run: bun run build --preset github_pages
+
+      # Uploads the build artifact to be deployed later
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./.output/public
-  # Deployment job
+  
+  # The 'deploy' job to deploy the artifact to GitHub Pages
   deploy:
-    # Add a dependency to the build job
+    # This job needs the 'build' job to complete successfully first
     needs: build
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
-    # Deploy to the github_pages environment
+    
+    # Deploys to the GitHub Pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # Specify runner + deployment step
+    
+    # Specifies the runner and deployment step
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
