@@ -11,9 +11,9 @@
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
     "analyze": "nuxt analyze",
-    "lint": "eslint --ext .js,.ts,.vue .",
+    "lint": "eslint .",
     "lint:fix": "bun run lint --fix",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --write ."
   },
   "packageManager": "bun@1.2.19",
   "dependencies": {
