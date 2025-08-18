@@ -43,6 +43,6 @@
     "maintained node versions"
   ],
   "lint-staged": {
-    "*.{js,ts,mjs,mts,json}": "eslint --fix"
+    "*.{js,ts,mjs,mts,json,vue}": "eslint --fix"
   }
 }
