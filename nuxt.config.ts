@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', 'nuxt-quasar-ui', '@vueuse/nuxt'],
   quasar: {},
+  telemetry: false,
   typescript: {
     strict: true,
     typeCheck: true,
