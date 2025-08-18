@@ -9,21 +9,40 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "lint:fix": "bun run lint --fix",
+    "format": "prettier --write --ignore-path .gitignore ."
   },
   "packageManager": "bun@1.2.19",
   "dependencies": {
+    "@nuxt/eslint": "1.8.0",
+    "eslint": "^9.0.0",
     "nuxt": "^4.0.3",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-compat": "^6.0.2",
+    "eslint-plugin-perfectionist": "^4.15.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.3.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "vue-tsc": "^3.0.5"
   },
   "engines": {
     "node": ">=22.0.0",
     "bun": ">=1.2.0"
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ],
+  "lint-staged": {
+    "*.{js,ts,mjs,mts,json}": "eslint --fix"
   }
 }
