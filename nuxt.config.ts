@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', 'nuxt-quasar-ui', '@vueuse/nuxt'],
   quasar: {},
+  runtimeConfig: {},
   telemetry: false,
   typescript: {
     strict: true,
