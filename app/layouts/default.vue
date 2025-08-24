@@ -24,12 +24,17 @@
         <q-list>
           <q-item-label header> Navigation </q-item-label>
 
-          <q-item v-ripple clickable to="/">
+          <q-item
+            v-for="page in pages"
+            :key="page.title"
+            v-ripple
+            clickable
+            :to="page.to">
             <q-item-section avatar>
-              <q-icon name="home" />
+              <q-icon :name="page.icon" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Home</q-item-label>
+              <q-item-label>{{ page.title }}</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>
@@ -46,6 +51,14 @@
 
 <script setup lang="ts">
 const leftDrawerOpen = useState('layoutDrawer', () => false);
+const pages = [
+  { icon: 'home', title: 'Home', to: { name: 'index' } },
+  {
+    icon: 'settings',
+    title: 'Sensor Toolbox',
+    to: { name: 'sensor-toolbox' },
+  },
+];
 
 function toggleDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
