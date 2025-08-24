@@ -17,6 +17,7 @@
           Alt Accuracy: &plusmn; {{ Math.round(coords.altitudeAccuracy) }}m
         </div>
         <div v-if="coords.speed !== null">
+          <!-- speed is provided in m/s -->
           Speed: {{ (coords.speed * 3.6).toFixed(1) }} km/h
         </div>
         <div v-if="coords.heading !== null">

@@ -2,12 +2,24 @@
   <q-page class="q-pa-lg">
     <p class="text-h2">Sensor Toolbox</p>
 
-    <client-only>
-      <div class="row q-gutter-md">
+    <div class="q-pa-md">
+      <div class="row q-col-gutter-md">
         <div class="col-12 col-md-6">
           <sensor-location-display />
         </div>
+        <div class="col-12 col-md-6">
+          <sensor-battery-display />
+        </div>
+        <div class="col-12 col-md-6">
+          <sensor-orientation-display />
+        </div>
+        <div class="col-12 col-md-6">
+          <sensor-motion-display />
+        </div>
+        <div class="col-12 col-md-6">
+          <sensor-devices-display />
+        </div>
       </div>
-    </client-only>
+    </div>
   </q-page>
 </template>
